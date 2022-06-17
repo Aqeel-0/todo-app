@@ -19,15 +19,10 @@ export default function Form({todoinput, setTodoinput, todolist, setTodolist, se
             }
             setTodolist(prevArr => ([...prevArr, newobj]))
             setRenderlist(prevArr => ([...prevArr, newobj]))
-            console.log(todolist)
-            localStorage.setItem('todo_list', JSON.stringify())
             setTodoinput("")
         }
-        
-    
-
     }
-
+    
     const Handlecategory = (e)=>{
         const category = e.target.value
         const completed_arr = []
@@ -45,7 +40,7 @@ export default function Form({todoinput, setTodoinput, todolist, setTodolist, se
 
     }
     return (
-        <div>
+        <div className='upper-main'>
             <header>
                 <h1>Aqeel's Todo List</h1>
             </header>

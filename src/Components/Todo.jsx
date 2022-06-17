@@ -1,4 +1,4 @@
-import React from 'react'
+import {useEffect} from 'react'
 
 export default function ({item, todolist, setTodolist, setRenderlist}) {
 
@@ -19,16 +19,22 @@ export default function ({item, todolist, setTodolist, setRenderlist}) {
     }
     const check_complete = (e)=>{
         const curr_id = e.target.parentNode.id
-        
         setTodolist(prevList => change_list(prevList, curr_id))
     }
 
     const delete_item = (e)=>{
         const curr_id = e.target.parentNode.id
-        setTodolist(prevList => delete_list(prevList, curr_id))
-        setRenderlist(prevList => delete_list(prevList, curr_id))
-        localStorage.setItem('todo_list', JSON.stringify(todolist))
+        e.target.parentNode.className+=' fall'
+        setTimeout(() => {
+            setTodolist(prevList => delete_list(prevList, curr_id))
+            setRenderlist(prevList => delete_list(prevList, curr_id))
+        }, 1000);
     }
+    useEffect(() => {
+        const check = localStorage.getItem('todo_list')
+        if(check && check.length != 0) localStorage.setItem('todo_list', JSON.stringify(todolist))
+    }, [todolist])
+    
 
 
 

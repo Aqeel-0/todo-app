@@ -9,12 +9,15 @@ export default function Home() {
   // saving to localStroage
   useEffect(() =>{
     const check = localStorage.getItem('todo_list')
+    
     if(check){
       setTodolist(JSON.parse(check))
       setRenderlist(JSON.parse(check))
+      
     }
     else{
       localStorage.setItem('todo_list', JSON.stringify(todolist))
+  
     }
   }, [])
   
